@@ -1,0 +1,41 @@
+<div *ngIf="folder" class="mb-3">
+    <div [class.card]="!folder.isRoot">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h5 class="card-title button" *ngIf="!folder.isRoot" (click)="toggleFolder(folder)">
+                        {{ folder.name }} {{ folder.isOpen ? '[-]' : '[+]' }}
+                    </h5>
+                </div>
+                <div *ngIf="folder.isOpen && !folder.parent && !folder.isRoot">
+                    <button *ngIf="!showCreateFolderForm" (click)="openCreateFolderForm()" class="btn btn-primary">
+                        Add Folder
+                    </button>
+                    <form *ngIf="showCreateFolderForm" [formGroup]="newFolderForm" class="mt-2">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <input formControlName="newFolderName" placeholder="Enter folder name"
+                                    class="form-control mb-2">
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" (click)="createFolder(folder)" class="btn btn-success ml-2">
+                                    Create Folder
+                                </button>
+                            </div>
+                            <div class="col-md-1">
+                                <button type="button" (click)="closeCreateFolderForm()" class="btn btn-danger ml-2">
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <ul *ngIf="folder.isOpen" class="list-group mt-2">
+                <app-file-manager-item *ngFor="let childFolder of folder.children" [folder]="childFolder"
+                    class="child-folder">
+                </app-file-manager-item>
+            </ul>
+        </div>
+    </div>
+</div>

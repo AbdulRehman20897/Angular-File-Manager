@@ -1,10 +1,17 @@
+// src/app/app.component.ts
 import { Component } from '@angular/core';
+import { Folder } from './model/folder.model';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'angular-file-manager';
+  rootFolder: Folder = {
+    id: 1,
+    name: 'Root',
+    children: [],
+    isRoot: true,
+  };
 }

@@ -1,0 +1,21 @@
+Angular File Manager:
+Welcome to the Angular File Manager! This application provides a simple file management interface built with Angular.
+Users can navigate through folders, create new folders, and organize their files.
+
+
+Clone the repository:
+git clone https://github.com/your-username/angular-file-manager.git
+
+Install dependencies:
+cd angular-file-manager
+npm install
+
+Run the application:
+ng serve
+
+The application will be available at http://localhost:4200/ by default.
+
+Features:
+Folder Navigation: Easily navigate through folders with an intuitive interface.
+Create Folders: Create new folders within the file manager.
+Responsive Design: The application is designed to work on various screen sizes.

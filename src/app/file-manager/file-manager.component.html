@@ -1,0 +1,33 @@
+<div class="folder-container card">
+    <ng-container *ngIf="rootFolder">
+        <div class="d-flex align-items-center">
+            <h3 (click)="toggleFolder(rootFolder)" class="button">
+                {{ rootFolder.name }} {{ rootFolder.isOpen ? '[-]' : '[+]' }}
+            </h3>
+            <button *ngIf="rootFolder.isOpen && !showCreateFolderForm" class="btn btn-primary m-2"
+                (click)="openCreateFolderForm()">
+                Create Folder
+            </button>
+        </div>
+        <form *ngIf="rootFolder.isOpen && showCreateFolderForm" [formGroup]="rootFolderForm" class="mt-2">
+            <div class="row">
+                <div class="col-md-4">
+                    <input formControlName="newFolderName" placeholder="Enter folder name" class="form-control mb-2">
+                </div>
+                <div class="col-md-2">
+                    <button type="button" (click)="createFolder(rootFolder)" class="btn btn-success">
+                        Create Folder
+                    </button>
+                </div>
+                <div class="col-md-2">
+                    <button type="button" (click)="closeCreateFolderForm()" class="btn btn-danger">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </form>
+        <ul *ngIf="rootFolder.isOpen">
+            <app-file-manager-item [folder]="rootFolder"></app-file-manager-item>
+        </ul>
+    </ng-container>
+</div>
